@@ -40,8 +40,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ghcr.io/windla/ais2api:latest
+          # build-args: |
+            # CAMOUFOX_URL=${{ env.CAMOUFOX_URL }}
           build-args: |
-            CAMOUFOX_URL=${{ env.CAMOUFOX_URL }}
+            CAMOUFOX_URL="https://github.com/daijro/camoufox/releases/download/v135.0.1-beta.24/camoufox-135.0.1-beta.24-lin.x86_64.zip"
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
