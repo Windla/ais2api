@@ -19,7 +19,7 @@ jobs:
       - name: Get Camoufox Download URL
         id: get_camoufox_url
         run: |
-          URL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/releases/latest" | grep "browser_download_url.*camoufox-linux.tar.gz" | cut -d : -f 2,3 | tr -d '", ')
+          URL=$(curl -s "https://api.github.com/repos/daijro/camoufox/releases/latest" | grep "browser_download_url.*camoufox-linux.tar.gz" | cut -d : -f 2,3 | tr -d '", ')
           echo "CAMOUFOX_URL=$URL" >> $GITHUB_ENV
 
       - name: Log in to the GitHub Container Registry
@@ -44,6 +44,7 @@ jobs:
             CAMOUFOX_URL=${{ env.CAMOUFOX_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
 
 
 
