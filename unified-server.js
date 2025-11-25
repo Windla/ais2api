@@ -520,7 +520,9 @@ class LoggingService {
   }
 
   _formatMessage(level, message) {
-    const timestamp = new Date().toISOString();
+    const now = new Date();
+    now.setTime(now.getTime() + 8 * 60 * 60 * 1000);
+    const timestamp = now.toISOString().replace('T', ' ').substring(0, 19);
     const formatted = `[${level}] ${timestamp} [${this.serviceName}] - ${message}`;
 
     // 将格式化后的日志存入缓冲区
