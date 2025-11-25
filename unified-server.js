@@ -1552,6 +1552,12 @@ class RequestHandler {
     // --- 修改结束 ---
 
     this._setResponseHeaders(res, headerMessage);
+    // 修复：强制覆盖 Content-Type 为 text/event-stream，兼容原生流式传输
+    res.set({
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive",
+    });
     this.logger.info("[Request] 开始流式传输...");
     try {
       let lastChunk = "";
@@ -2781,4 +2787,5 @@ if (require.main === module) {
 }
 
 module.exports = { ProxyServerSystem, BrowserManager, initializeServer };
+
 
