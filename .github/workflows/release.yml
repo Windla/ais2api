@@ -26,7 +26,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          # username: ${{ github.actor }}
+          username: windla
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
@@ -43,3 +44,4 @@ jobs:
             CAMOUFOX_URL=${{ env.CAMOUFOX_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
