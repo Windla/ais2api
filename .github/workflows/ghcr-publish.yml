@@ -42,7 +42,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ env.OWNER }}/${{ github.event.repository.name }}:latest
+          tags: | 
+            ghcr.io/${{ env.OWNER }}/${{ github.event.repository.name }}:latest
+            ghcr.io/${{ env.OWNER }}/${{ github.event.repository.name }}:${{ github.sha }}
           build-args: |
             CAMOUFOX_URL=${{ env.CAMOUFOX_URL }}
           cache-from: type=gha
